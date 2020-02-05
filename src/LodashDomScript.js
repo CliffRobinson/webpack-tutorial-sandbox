@@ -1,4 +1,5 @@
 import _ from "lodash";
+import "./style.css";
 
 function addLodashEl() {
   const element = document.createElement("div");
