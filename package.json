@@ -1,0 +1,19 @@
+{
+  "name": "node-http-server",
+  "version": "1.0.0",
+  "description": "Node.js example server starter project",
+  "scripts": {
+    "start": "webpack && nodemon index.js"
+  },
+  "dependencies": {
+    "express": "4.17.1",
+    "lodash": "4.17.15",
+    "webpack": "4.41.5",
+    "webpack-cli": "3.3.10"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4",
+    "webpack-cli": "^3.3.10"
+  },
+  "keywords": []
+}
