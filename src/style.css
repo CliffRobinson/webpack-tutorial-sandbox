@@ -1,5 +1,22 @@
 html {
-  background: linear-gradient(135deg, maroon, azure);
+  background: url("./images/Gallia-of-the-Endless-Dance-Theros-Beyond-Death-Art.jpg");
   width: 100%;
   height: 100%;
+}
+
+img {
+  width: 200px;
+  height: 150px;
+}
+
+@font-face {
+  font-family: "ssp";
+  src: url("./fonts/SourceSansPro-Regular.ttf") format("ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+.myClass {
+  color: yellow;
+  font-family: "ssp";
 }

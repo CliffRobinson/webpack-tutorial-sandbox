@@ -1,7 +1,8 @@
 import _ from "lodash";
 import "./style.css";
+import galliaImg from "./images/Gallia-of-the-Endless-Dance-Theros-Beyond-Death-Art.jpg";
 
-function addLodashEl() {
+export function addLodashEl() {
   const element = document.createElement("div");
 
   element.innerHTML = _.join(
@@ -11,4 +12,13 @@ function addLodashEl() {
 
   return element;
 }
-document.body.appendChild(addLodashEl());
+
+export function addGallia() {
+  const gallia = new Image();
+  gallia.src = galliaImg;
+
+  const frame = document.createElement("div");
+  frame.classList.add("frame");
+  frame.innerHTML = gallia;
+  return gallia;
+}
