@@ -1,24 +1,25 @@
 {
-  "name": "node-http-server",
-  "version": "1.0.0",
-  "description": "Node.js example server starter project",
-  "scripts": {
-    "start": "webpack && nodemon index.js"
-  },
-  "dependencies": {
-    "css-loader": "3.4.2",
-    "csv-loader": "3.0.2",
-    "express": "4.17.1",
-    "lodash": "4.17.15",
-    "style-loader": "1.1.3",
-    "webpack": "4.41.5",
-    "webpack-cli": "3.3.10",
-    "xml-loader": "1.2.1"
-  },
-  "devDependencies": {
-    "file-loader": "^5.0.2",
-    "nodemon": "1.18.4",
-    "webpack-cli": "^3.3.10"
-  },
-  "keywords": []
+    "name": "node-http-server",
+    "version": "1.0.0",
+    "description": "Node.js example server starter project",
+    "scripts": {
+        "start": "webpack && nodemon server"
+    },
+    "dependencies": {
+        "css-loader": "3.4.2",
+        "csv-loader": "3.0.2",
+        "express": "4.17.1",
+        "lodash": "4.17.15",
+        "style-loader": "1.1.3",
+        "webpack": "4.41.5",
+        "xml-loader": "1.2.1"
+    },
+    "devDependencies": {
+        "file-loader": "^5.0.2",
+        "jest": "^25.1.0",
+        "nodemon": "1.18.4",
+        "webpack-cli": "^3.3.10",
+        "supertest": "^4.0.2"
+    },
+    "keywords": []
 }
