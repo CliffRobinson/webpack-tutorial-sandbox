@@ -1,16 +1,8 @@
-const express = require("express");
-var path = require("path");
+const server = require("./server");
 
-const server = express();
-server.use(express.static(path.join(__dirname, "dist")));
-server.use(express.urlencoded({ extended: true }));
-
-var indexPath = path.join(__dirname, "src/index.html");
-
-//create a server object:
-console.log("Creating Server!!");
-server
-  .get("/", function(req, res) {
-    res.sendFile(indexPath);
-  })
-  .listen(8080); //the server object listens on port 8080
+const port = process.env.PORT || 3000;
+console.log("hello");
+server.listen(port, function() {
+  console.log("Server listening on port: ", port);
+  console.log("Now have a lovely day, you muscular Socrates");
+});
