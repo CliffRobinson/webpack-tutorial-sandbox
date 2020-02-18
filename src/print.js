@@ -9,3 +9,5 @@ export function addButton() {
 
     return btn;
 }
+
+document.body.appendChild(addButton())

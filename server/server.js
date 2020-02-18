@@ -12,6 +12,7 @@ server
     .get("/", function(req, res) {
         res.status(200)
         res.sendFile(indexPath);
+        //res.send('<h1>I am not the webpack script!</h1>')
     })
 
 module.exports = server
