@@ -3,18 +3,23 @@
     "version": "1.0.0",
     "description": "Node.js example server starter project",
     "scripts": {
-        "start": "webpack && nodemon server"
+        "start": "webpack && nodemon server",
+        "knex": "knex",
+        "test": "jest"
     },
     "dependencies": {
         "css-loader": "3.4.2",
         "csv-loader": "3.0.2",
         "express": "4.17.1",
+        "knex": "^0.20.10",
         "lodash": "4.17.15",
+        "sqlite3": "^4.1.1",
         "style-loader": "1.1.3",
         "webpack": "4.41.5",
         "xml-loader": "1.2.1"
     },
     "devDependencies": {
+        "clean-webpack-plugin": "^3.0.0",
         "file-loader": "^5.0.2",
         "html-webpack-plugin": "^3.2.0",
         "jest": "^25.1.0",
