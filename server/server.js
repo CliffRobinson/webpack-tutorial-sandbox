@@ -1,11 +1,15 @@
 const express = require("express");
-var path = require("path");
-
+const path = require("path");
 const server = express();
+
+const userRoutes = require('./routes/user-routes')
+
 server.use(express.static(path.join(__dirname, "../dist")));
 server.use(express.urlencoded({ extended: true }));
 
-var indexPath = path.join(__dirname, "../src/index.html");
+server.use('/users', userRoutes)
+
+const indexPath = path.join(__dirname, "../src/index.html");
 
 //create a server object:
 server

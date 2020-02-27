@@ -10,4 +10,5 @@ describe("/server/server.js", () => {
                 expect(res.status).toEqual(200)
             })
     })
+
 });
