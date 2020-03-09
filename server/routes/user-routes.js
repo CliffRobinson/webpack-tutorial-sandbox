@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
             res.json(users)
         })
         .catch(err => {
+            console.log(`Error: ${err.message}`)
             res.send('Error: ' + err.message)
         })
 })

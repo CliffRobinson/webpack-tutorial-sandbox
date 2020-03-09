@@ -3,12 +3,13 @@ const supertest = require('supertest');
 const server = require('./server');
 
 describe("/server/server.js", () => {
-    it('root route', () => {
+    it('root route', (done) => {
         supertest(server)
             .get('/')
-            .end((err, res) => {
-                expect(res.status).toEqual(200)
-            })
+            .expect(200, done)
+            // .end((err, res) => {
+            //     expect(res.status).toEqual(200)
+            // })
     })
 
 });
