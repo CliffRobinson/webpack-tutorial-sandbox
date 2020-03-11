@@ -1,7 +1,10 @@
+const log = require('loglevel')
 const server = require("./server")
 const port = process.env.PORT || 3000
 
+log.setLevel("info");
+
 server.listen(port, () => {
-    console.log(`Listening on port: ${port}`)
-    console.log(`Now you have a delightful day, you charming genius`)
+    log.info(`Listening on port: ${port}`)
+    log.info(`Now you have a delightful day, you charming genius`)
 })

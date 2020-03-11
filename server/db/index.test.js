@@ -70,10 +70,11 @@ describe('/server/db/index.js', () => {
         //Arrange
         const name = 'Hermione'
         const password = 'password'
+        const currentGame = 0
         const expected = testData.slice()
-        expected.push({ id: 6, name, password })
+        expected.push({ id: 6, name, password, currentGame })
             //Act
-        return db.addUser({ name, password }, testDb)
+        return db.addUser({ name, password, currentGame }, testDb)
             //Assert we are adding id 6
             .then(result => expect(result).toEqual([6]))
             .then(() => {
@@ -91,7 +92,8 @@ describe('/server/db/index.js', () => {
         const newUser = {
             id: 3,
             name: "Lee",
-            password: "password1"
+            password: "password1",
+            currentGame: 0
         }
         const expected = testData.slice();
         expected[2] = newUser

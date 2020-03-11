@@ -4,11 +4,11 @@ exports.seed = function(knex) {
         .then(function() {
             // Inserts seed entries
             return knex('users').insert([
-                { id: 1, name: 'Harry', password: 'password' },
-                { id: 2, name: 'Ron', password: 'password' },
-                { id: 3, name: 'Fred', password: 'password' },
-                { id: 4, name: 'George', password: 'password' },
-                { id: 5, name: 'Neville', password: 'password' }
+                { id: 1, name: 'Harry', password: 'password', currentGame: 0 },
+                { id: 2, name: 'Ron', password: 'password', currentGame: 1 },
+                { id: 3, name: 'Fred', password: 'password', currentGame: 1 },
+                { id: 4, name: 'George', password: 'password', currentGame: 2 },
+                { id: 5, name: 'Neville', password: 'password', currentGame: 2 }
             ]);
         });
 };

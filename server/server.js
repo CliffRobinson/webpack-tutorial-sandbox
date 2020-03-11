@@ -1,3 +1,4 @@
+const log = require('loglevel')
 const express = require("express");
 const path = require("path");
 const server = express();
@@ -14,6 +15,7 @@ const indexPath = path.join(__dirname, "../src/index.html");
 //create a server object:
 server
     .get("/", function(req, res) {
+        log.trace(`Hitting the root of the app.`)
         res.status(200)
         res.sendFile(indexPath);
         //res.send('<h1>I am not the webpack script!</h1>')
