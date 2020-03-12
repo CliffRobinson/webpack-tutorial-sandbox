@@ -1,3 +1,5 @@
+const knex = require('knex')
+
 const testEnv = require('./test-environment');
 const db = require('./index');
 const data = require('./seeds/test/test-users').data;

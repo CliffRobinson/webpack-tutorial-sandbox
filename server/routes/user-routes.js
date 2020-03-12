@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
         .catch(err => {
             //TODO: Test this somehow?
             log.error('Error: ' + err.message)
+            res.status(404)
             res.send('Error: ' + err.message)
         })
 })

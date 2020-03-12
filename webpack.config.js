@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
+    mode: "development",
     entry: {
         app: "./src/index.js",
         print: "./src/print.js"
@@ -37,7 +38,18 @@ module.exports = {
             {
                 test: /\.xml$/,
                 use: ['xml-loader']
+            },
+            {
+                test: /\.(jsx|js)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader']
             }
         ]
+    },
+    resolve: {
+        extensions: [".jsx", ".js"],
+        alias: {
+            src: path.resolve(__dirname, 'src/')
+        }
     }
 };

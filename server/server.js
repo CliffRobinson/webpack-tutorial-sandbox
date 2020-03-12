@@ -1,12 +1,14 @@
 const log = require('loglevel')
 const express = require("express");
 const path = require("path");
+const bodyParser = require('body-parser')
 const server = express();
 
 const userRoutes = require('./routes/user-routes')
 
 server.use(express.static(path.join(__dirname, "../dist")));
 server.use(express.urlencoded({ extended: true }));
+server.use(bodyParser.json())
 
 server.use('/users', userRoutes)
 
