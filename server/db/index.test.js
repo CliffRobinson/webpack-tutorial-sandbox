@@ -1,5 +1,3 @@
-const knex = require('knex')
-
 const testEnv = require('./test-environment');
 const db = require('./index');
 const data = require('./seeds/test/test-users').data;
@@ -29,7 +27,7 @@ describe('/server/db/index.js', () => {
         return db.getAllUsers(testDb)
             .then(actual => {
                 //Assert
-                expect(actual).toEqual(testData)
+                expect(actual).toEqual(expected)
             })
     })
 
@@ -112,4 +110,9 @@ describe('/server/db/index.js', () => {
                     })
             })
     })
+
+    test('db calls devDb by default', () => {
+
+    })
+
 })
