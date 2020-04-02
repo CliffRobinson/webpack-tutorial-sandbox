@@ -7,9 +7,6 @@ describe("/server/server.js", () => {
         supertest(server)
             .get('/')
             .expect(200, done)
-            // .end((err, res) => {
-            //     expect(res.status).toEqual(200)
-            // })
     })
 
 });

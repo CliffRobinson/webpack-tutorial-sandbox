@@ -1,32 +1,40 @@
 const log = require('loglevel')
-
-const config = require('../../knexfile').development
-var devDb = require('knex')(config)
+var devDb = require('./connection')
 
 module.exports = {
-    getAllUsers: function(db = devDb) {
+    getAllUsers: function (testDb) {
+        /* istanbul ignore next */
+        const db = testDb || devDb
         log.trace(`Getting all users from DB`)
         return db('users')
             .select()
     },
-    getUserById: function(id, db = devDb) {
+    getUserById: function (id, testDb) {
+        /* istanbul ignore next */
+        const db = testDb || devDb
         log.trace(`Getting user id:${id} from DB`)
         return db('users')
             .where('id', id)
             .select()
     },
-    deleteUserById: function(id, db = devDb) {
+    deleteUserById: function (id, testDb) {
+        /* istanbul ignore next */
+        const db = testDb || devDb
         log.trace(`Deleting user id:${id} from DB`)
         return db('users')
             .where('id', id)
             .delete()
     },
-    addUser: function(user, db = devDb) {
+    addUser: function (user, testDb) {
+        /* istanbul ignore next */
+        const db = testDb || devDb
         log.trace(`Adding user ${user.name} to DB`)
         return db('users')
             .insert(user)
     },
-    updateUser: function(user, db = devDb) {
+    updateUser: function (user, testDb) {
+        /* istanbul ignore next */
+        const db = testDb || devDb
         log.trace(`Updating user ${user.name} in DB`)
         return db('users')
             .where('id', user.id)

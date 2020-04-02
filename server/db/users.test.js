@@ -1,5 +1,15 @@
+// const mockConn = jest.fn().mockImplementation(()=> {
+//     return {
+//         select:(x)=>x,
+//         where: (x)=>({select:()=>x, delete:(x)=>x, update:(x)=>x,}),
+//         insert:(x)=>x
+//     }
+// })
+
+// jest.mock('./connection', ()=> mockConn)
+
 const testEnv = require('./test-environment');
-const db = require('./index');
+const db = require('./users');
 const data = require('./seeds/test/test-users').data;
 let testData = [];
 let testDb = null;
@@ -111,8 +121,28 @@ describe('/server/db/index.js', () => {
             })
     })
 
-    test('db calls devDb by default', () => {
+    // test('db calls devDb by default', () => {
+    //     db.getAllUsers()
+    //     expect(mockConn).toBeCalledWith('users')
+    //     mockConn.mockClear()
 
-    })
+    //     db.getUserById()
+    //     expect(mockConn).toBeCalledWith('users')
+    //     mockConn.mockClear()
+
+    //     db.deleteUserById()
+    //     expect(mockConn).toBeCalledWith('users')
+    //     mockConn.mockClear()
+
+    //     db.addUser()
+    //     expect(mockConn).toBeCalledWith('users')
+    //     mockConn.mockClear()
+        
+    //     db.updateUser()
+    //     expect(mockConn).toBeCalledWith('users')
+    //     mockConn.mockClear()
+
+    //     console.log(mockConn.mock)
+    // })
 
 })

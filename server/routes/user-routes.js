@@ -1,12 +1,12 @@
 const log = require('loglevel')
-const db = require('../db/index')
+const users = require('../db/users')
 
 const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
     log.trace(`Hitting / of user-routes`)
-    db.getAllUsers()
+    users.getAllUsers()
         .then(users => {
             log.trace(`users received from / of user routes`)
             res.json(users)
