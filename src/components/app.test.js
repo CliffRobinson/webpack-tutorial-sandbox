@@ -5,6 +5,7 @@ import {App} from './App';
 
 describe('components/app/js', ()=> {
     it('matches snapshot', ()=> {
-        expect(shallow(<App />)).toMatchSnapshot()
+        const wrapper = shallow(<App />)
+        expect(wrapper).toMatchSnapshot()
     })
 })

@@ -3,7 +3,7 @@ const initialState = [
     { user_id: 2, room_id: 0, time: 1585802165950, msg: "redux: ugh, shut up" }
 ]
 
-export function messages(state = initialState, action) {
+export function chat(state = initialState, action) {
     switch (action.type) {
         case ("ADDMESSAGE"):
             //add message to db

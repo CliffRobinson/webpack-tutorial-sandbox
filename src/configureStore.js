@@ -1,5 +1,5 @@
 import { combineReducers, createStore } from 'redux'
-import { composeWithDevTools, devToolsEnhancer } from 'redux-devtools-extension'
+import { devToolsEnhancer } from 'redux-devtools-extension'
 
 import reducers from './reducers/*'
 
