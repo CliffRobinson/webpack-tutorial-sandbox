@@ -17,5 +17,5 @@ const data = [
 ]
 
 test('chatWindow', ()=> {
-    expect(shallow(<ChatWindow chat={data}/>))
+    expect(shallow(<ChatWindow chat={data}/>)).toMatchSnapshot()
 })

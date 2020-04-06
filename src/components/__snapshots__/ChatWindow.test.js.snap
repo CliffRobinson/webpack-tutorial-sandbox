@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`chatWindow 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "white",
+      "border": "2px solid black",
+    }
+  }
+>
+  <p
+    key="0"
+  >
+    : 
+    db: SANPE KILLS DUMBELDORE!!
+  </p>
+  <p
+    key="1"
+  >
+    : 
+    db: idk why I hang out with you
+  </p>
+</div>
+`;
