@@ -7,3 +7,7 @@ const mapStateToProps = (state) => state
 //const mapDispatchToProps
 
 export const ChatWindowContainer = connect(mapStateToProps)(ChatWindow)
+
+export const forUnitTests = {
+    mapStateToProps
+}

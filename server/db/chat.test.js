@@ -1,6 +1,26 @@
 const testEnv = require('./test-environment');
 const chatDb = require('./chat');
-const data = require('./seeds/test/test-chat').data;
+const data = [
+    {
+        name: 'Harry',
+        msg: 'db: SANPE KILLS DUMBELDORE!!',
+        time: 1585802175899,
+        room_id: 0
+    },
+    {
+        name: 'Ron',
+        msg: 'db: idk why I hang out with you',
+        time: 1585802175950,
+        room_id: 0
+    },
+    {
+        name: 'Fred',
+        msg: 'db: anyone in here?',
+        time: 1585802175950, 
+        room_id: 1
+    }
+]
+
 let testData = [];
 let testDb = null;
 
@@ -8,7 +28,7 @@ describe('/server/db/index.js', () => {
 
     // Create a separate in-memory database before each test.
     beforeEach(() => {
-        testData = data;
+        testData = data.slice();
         testDb = testEnv.getTestDb()
         return testEnv.initialise(testDb)
     })
@@ -29,8 +49,15 @@ describe('/server/db/index.js', () => {
     })
 
     it('retrieves chat messages by room', () => {
-        const expected = testData.slice(0, 2)
-
+        const expected = testData.slice(0, 2).map(
+            (item) => {
+                return {
+                    msg:item.msg,
+                    time:item.time,
+                    name:item.name
+                }
+            }
+        )
         return chatDb.getChatMessagesByRoom(0, testDb)
             .then(actual => {
                 expect(actual).toEqual(expected)
@@ -38,14 +65,14 @@ describe('/server/db/index.js', () => {
     })
 
     it('can add chat messages', () => {
-        const newMsg = {
-            user_id: 1,
-            room_id:0, 
-            time: 1585802176666,
-            msg: "whatever u luv it"
-        }
 
-        const expected = [...testData, {id: 6, ...newMsg}]
+        const time = 1585802176666
+        const msg = "whatever u luv it"
+        const room_id = 0
+
+        const newMsg = { user_id: 1, room_id, time, msg}
+
+        const expected = [...testData, { name: "Harry", time, msg, room_id }]
 
         return chatDb.addChatMessage(newMsg, testDb)
             .then(result => expect(result).toEqual([6]))
