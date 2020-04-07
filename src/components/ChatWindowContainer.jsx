@@ -3,10 +3,14 @@ import { connect } from 'react-redux'
 
 import { ChatWindow } from './ChatWindow'
 
-const mapStateToProps = (state) => state
-//const mapDispatchToProps
+import {requestMessages} from '../actions/messageActions'
 
-export const ChatWindowContainer = connect(mapStateToProps)(ChatWindow)
+const mapStateToProps = (state) => state
+const mapDispatchToProps = {
+    requestMessages
+}
+
+export const ChatWindowContainer = connect(mapStateToProps, mapDispatchToProps)(ChatWindow)
 
 export const forUnitTests = {
     mapStateToProps

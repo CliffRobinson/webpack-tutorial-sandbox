@@ -1,0 +1,10 @@
+- post route for chat msgs
+- redux to add chat msg
+- redux for local chat state / local state hook
+- react input for chat messages
+
+- socket wiring
+    - talk to harrison
+
+- tax-routing
+- auth
