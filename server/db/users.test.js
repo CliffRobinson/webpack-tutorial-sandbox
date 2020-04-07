@@ -141,8 +141,6 @@ describe('/server/db/index.js', () => {
         db.updateUser({name:"bob"})
         expect(mockConn).toBeCalledWith('users')
         mockConn.mockClear()
-
-        console.log(mockConn.mock)
     })
 
 })

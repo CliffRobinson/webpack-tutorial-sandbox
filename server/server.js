@@ -5,12 +5,14 @@ const bodyParser = require('body-parser')
 const server = express();
 
 const userRoutes = require('./routes/user-routes')
+const chatRoutes = require('./routes/chat-routes')
 
 server.use(express.static(path.join(__dirname, "../dist")));
 server.use(express.urlencoded({ extended: true }));
 server.use(bodyParser.json())
 
 server.use('/users', userRoutes)
+server.use('/chat', chatRoutes)
 
 const indexPath = path.join(__dirname, "../src/index.html");
 

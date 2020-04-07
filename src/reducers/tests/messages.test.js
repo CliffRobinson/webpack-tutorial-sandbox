@@ -1,5 +1,5 @@
-import {getMessages, requestMessages, receiveMessages} from '../actions/messageActions'
-import { chat, forUnitTesting} from './messages'
+import {getMessages, requestMessages, receiveMessages} from '../../actions/messageActions'
+import { chat, forUnitTesting} from '../messages'
 const {initialState} = forUnitTesting
 
 test('getMessages', () => {
