@@ -2,6 +2,7 @@
 - redux to add chat msg
 - redux for local chat state / local state hook
 - react input for chat messages
+- slack q on server errors?
 
 - socket wiring
     - talk to harrison
