@@ -12,5 +12,5 @@ function* fetchMessages(action) {
 }
 
 export function* messageSaga() {
-    yield takeEvery(REQUEST_MESSAGES, fetchMessages)
+    yield takeEvery("fdhgfd", fetchMessages)
 }

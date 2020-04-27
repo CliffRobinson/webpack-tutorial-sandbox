@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 
 import { ChatWindow } from './ChatWindow'
 
-import {requestMessages} from '../actions/messageActions'
+import {requestMessagesByRoom, updateCurrentMessage, addMessage} from '../actions/messageActions'
 
 const mapStateToProps = (state) => state
 const mapDispatchToProps = {
-    requestMessages
+    requestMessagesByRoom, updateCurrentMessage, addMessage
 }
 
 export const ChatWindowContainer = connect(mapStateToProps, mapDispatchToProps)(ChatWindow)
