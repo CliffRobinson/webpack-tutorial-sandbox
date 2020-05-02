@@ -8,6 +8,6 @@ export function App() {
     return <div> 
         <p>I am rendered from React!!!!</p>
         <ChatWindowContainer />
-        <SocketListener />
+        {/* <SocketListener /> */}
     </div>
 }

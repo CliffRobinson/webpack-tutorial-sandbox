@@ -1,12 +1,12 @@
-const mockConn = jest.fn().mockImplementation(()=> {
+const mockConn = jest.fn().mockImplementation(() => {
     return {
-        select:(x)=>x,
-        where: (x)=>({select:()=>x, delete:(x)=>x, update:(x)=>x,}),
-        insert:(x)=>x
+        select: (x) => x,
+        where: (x) => ({ select: () => x, delete: (x) => x, update: (x) => x, }),
+        insert: (x) => x
     }
 })
 
-jest.mock('./connection', ()=> mockConn)
+jest.mock('./connection', () => mockConn)
 
 const testEnv = require('./test-environment');
 const db = require('./users');
@@ -83,7 +83,7 @@ describe('/server/db/index.js', () => {
         const currentGame = 0
         const expected = testData.slice()
         expected.push({ id: 6, name, password, currentGame })
-            //Act
+        //Act
         return db.addUser({ name, password, currentGame }, testDb)
             //Assert we are adding id 6
             .then(result => expect(result).toEqual([6]))
@@ -134,13 +134,27 @@ describe('/server/db/index.js', () => {
         expect(mockConn).toBeCalledWith('users')
         mockConn.mockClear()
 
-        db.addUser({name:"bob"})
+        db.addUser({ name: "bob" })
         expect(mockConn).toBeCalledWith('users')
         mockConn.mockClear()
-        
-        db.updateUser({name:"bob"})
+
+        db.updateUser({ name: "bob" })
         expect(mockConn).toBeCalledWith('users')
         mockConn.mockClear()
     })
 
+    test('Test that rollback drops table', (done) => {
+        return testDb.schema.hasTable('users')
+            .then(result1 => expect(result1).toEqual(true))
+            .then(() => {
+                testDb.migrate.rollback()
+                    .then((rollbackRes) => {
+                        testDb.schema.hasTable('users')
+                            .then(result => {
+                                expect(result).toEqual(false)
+                                done()
+                            })
+                    })
+            })
+    })
 })

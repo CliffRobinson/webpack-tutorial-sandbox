@@ -8,7 +8,7 @@ export function requestMessagesByRoom(room_id, socket) {
     return {
         type: REQUEST_MESSAGES,
         room_id,
-        socket
+        //socket
     }
 }
 
@@ -38,7 +38,7 @@ export function addMessage(msg, socket) {
     console.log('calling addmessage action creates')
     return {
         type: ADD_MESSAGE,
-        socket,
+        //socket,
         msg
     }
 }

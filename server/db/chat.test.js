@@ -81,4 +81,19 @@ describe('/server/db/index.js', () => {
                     .then(actual => expect(actual).toEqual(expected))
             })
     })
+
+    test('Test that rollback drops table', (done) => {
+        return testDb.schema.hasTable('chat')
+            .then(result1 => expect(result1).toEqual(true))
+            .then(() => {
+                testDb.migrate.rollback()
+                    .then((rollbackRes) => {
+                        testDb.schema.hasTable('chat')
+                            .then(result => {
+                                expect(result).toEqual(false)
+                                done()
+                            })
+                    })
+            })
+    })
 })

@@ -10,8 +10,12 @@ const initialState = {
 }
 
 export function chat(state = initialState, action) {
+    
+    log.setLevel('trace')
     log.trace("Messages reducer receiving following action")
     log.trace(action)
+
+    //log.trace(reducerArg)
     switch (action.type) {
         case ADD_MESSAGE: 
             action.socket.emit('addChatMessage', action.msg)

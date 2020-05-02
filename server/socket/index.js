@@ -21,7 +21,8 @@ module.exports = (app) => {
             chatDb.getChatMessagesByRoom(room_id)
                         .then(messages => {
                             log.debug(`just did getChatMessagesByRoom, emitting an array of ${messages.length}`)
-                            socket.emit('receiveChatMessagesByRoom', messages)
+                            //socket.emit('receiveChatMessagesByRoom', messages)
+                            io.emit('dispatch', {dispatchFunction: "receiveMessages", payload: messages})
                         })
         })
 
@@ -34,7 +35,8 @@ module.exports = (app) => {
                     chatDb.getChatMessages()
                         .then(messages => {
                             log.debug(`just did getChatMessagesByRoom for room ${message.room_id}, emitting an array of ${messages.length}`)
-                            io.emit('receiveChatMessagesByRoom', messages) 
+                            //io.emit('receiveChatMessagesByRoom', messages) 
+                            io.emit('dispatch', {dispatchFunction: "receiveMessages", payload: messages})
                         })
                 })
         })

@@ -1,27 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`chatWindow 1`] = `
-<div
-  style={
-    Object {
-      "backgroundColor": "white",
-      "border": "2px solid black",
+<form>
+  <div
+    style={
+      Object {
+        "backgroundColor": "white",
+        "border": "2px solid black",
+      }
     }
-  }
->
-  <p
-    key="0"
   >
-    Harry
-    : 
-    db: SANPE KILLS DUMBELDORE!!
-  </p>
-  <p
-    key="1"
+    <p
+      key="0"
+    >
+      Harry
+      : 
+      db: SANPE KILLS DUMBELDORE!!
+    </p>
+    <p
+      key="1"
+    >
+      Ron
+      : 
+      db: idk why I hang out with you
+    </p>
+  </div>
+  <button
+    onClick={[Function]}
   >
-    Ron
-    : 
-    db: idk why I hang out with you
-  </p>
-</div>
+    Get memssages
+  </button>
+  <input
+    onChange={[Function]}
+    type="text"
+  />
+</form>
 `;

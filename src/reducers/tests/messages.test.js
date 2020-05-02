@@ -1,4 +1,4 @@
-import {getMessages, requestMessages, receiveMessages} from '../../actions/messageActions'
+import {getMessages, requestMessagesByRoom, receiveMessages, updateCurrentMessage} from '../../actions/messageActions'
 import { chat, forUnitTesting} from '../messages'
 const {initialState} = forUnitTesting
 
@@ -11,14 +11,34 @@ test('getMessages', () => {
 
 test('requestMessages', () => {
     const expected = initialState
-    const actual = chat(undefined, requestMessages())
+    const mockEmit = jest.fn()
+    const mockSocket = {
+        emit: mockEmit
+    }
+    const actual = chat(undefined, requestMessagesByRoom(0, mockSocket))
 
     expect(actual).toEqual(expected)
 })
 
 test('receiveMessage', ()=> {
-    const expected = 'hello'
-    const actual = chat(undefined, receiveMessages(expected))
+    const messages = ['hello']
+    const expected = {
+        ...initialState,
+        messages
+    }
+    const actual = chat(undefined, receiveMessages(messages))
+
+    expect(actual).toEqual(expected)
+})
+
+test('updateCurrentMessage', ()=> {
+    const newMessage = "lol"
+    const expected = {
+        ...initialState,
+        currentMessage: newMessage
+    }
+
+    const actual = chat(undefined, updateCurrentMessage(newMessage))
 
     expect(actual).toEqual(expected)
 })
