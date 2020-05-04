@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import log from 'loglevel'
+
 
 export function ChatWindow(props) {
     const { chat, socket, requestMessagesByRoom, updateCurrentMessage, addMessage } = props
@@ -12,7 +14,6 @@ export function ChatWindow(props) {
 
     function clicker(e) {
         e.preventDefault()
-        console.log('clicky')
         const message = {
             room_id,
             user_id,
@@ -27,7 +28,7 @@ export function ChatWindow(props) {
     }
 
     useEffect(() => {
-        console.log('chatwindow component is dispatching requestmessages action')
+        log.trace('chatwindow component is dispatching requestmessages action')
         requestMessagesByRoom(room_id, socket)
     },[])
 

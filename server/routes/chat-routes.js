@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
             res.json(msgs)
         })
         .catch(err => {
-            //TODO: Test this somehow?
             log.error('Error: ' + err.message)
             res.status(404)
             res.send('Error: ' + err.message)

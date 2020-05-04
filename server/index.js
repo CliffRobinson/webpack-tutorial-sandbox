@@ -6,7 +6,7 @@ const {socketPort, serverPort} = require('../constants')
 
 const port = process.env.PORT || serverPort
 
-log.setLevel("trace");
+log.setLevel("debug");
 
 server.listen(port, () => {
     log.info(`Listening on port: ${port}`)

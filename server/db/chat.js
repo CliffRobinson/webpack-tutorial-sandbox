@@ -13,7 +13,7 @@ module.exports = {
     getChatMessagesByRoom: function (roomId, testDb) {
         /*istanbul ignore next */
         const db = testDb || devDb
-        log.info(`getting all chat msgs from db for room ${roomId}`)
+        log.trace(`getting all chat msgs from db for room ${roomId}`)
         return db('chat')
             .where('room_id', roomId)
             .join('users', 'users.id', "=", 'chat.user_id')
