@@ -1,11 +1,8 @@
-- post route for chat msgs
-- redux to add chat msg
-- redux for local chat state / local state hook
-- react input for chat messages
-- slack q on server errors?
+ - tidy and make consistent interaction between redux and sockets
+ - test that server socket returns (mocked) db content when it receives actions
+ - test that reducers emit on client socket
+ - test that client socket calls store dispatch
 
-- socket wiring
-    - talk to harrison
+ - ask about http/server/socket interaction?
 
-- tax-routing
 - auth
