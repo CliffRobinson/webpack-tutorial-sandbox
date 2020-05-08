@@ -1,3 +1,5 @@
+ 
+ - fix disappearing background
  - X:tidy and make consistent interaction between redux and sockets
  - x: test that server socket returns (mocked) db content when it receives actions
  - X: test that reducers emit on client socket
