@@ -1,6 +1,16 @@
-import {getMessages, requestMessagesByRoom, receiveMessages, updateCurrentMessage} from '../../actions/messageActions'
+import {getMessages, requestMessagesByRoom, receiveMessages, updateCurrentMessage, addMessage} from '../../actions/messageActions'
 import { chat, forUnitTesting} from '../messages'
 const {initialState} = forUnitTesting
+
+import {REQUEST_MESSAGES_BY_ROOM, ADD_CHAT_MESSAGE} from '../../../constants/socketEvents'
+
+const fakeEmit = jest.fn().mockName('fakeEmit')
+const fakeSocket = {
+    emit: fakeEmit
+}
+const replicateMiddleware = (action) => ({...action, socket: fakeSocket})
+
+beforeEach(()=> jest.clearAllMocks())
 
 test('getMessages', () => {
     const expected = initialState
@@ -11,13 +21,13 @@ test('getMessages', () => {
 
 test('requestMessages', () => {
     const expected = initialState
-    const mockEmit = jest.fn()
-    const mockSocket = {
-        emit: mockEmit
-    }
-    const actual = chat(undefined, requestMessagesByRoom(0, mockSocket))
+
+    const actual = chat(undefined, replicateMiddleware(requestMessagesByRoom(0)))
 
     expect(actual).toEqual(expected)
+
+    expect(fakeEmit.mock.calls[0]).toEqual([REQUEST_MESSAGES_BY_ROOM, 0])
+
 })
 
 test('receiveMessage', ()=> {
@@ -41,4 +51,14 @@ test('updateCurrentMessage', ()=> {
     const actual = chat(undefined, updateCurrentMessage(newMessage))
 
     expect(actual).toEqual(expected)
+})
+
+test('addMessage', ()=> {
+    const message = 'ello I am msg'
+    const expected = initialState
+    const actual = chat(undefined, replicateMiddleware(addMessage(message)))
+
+    expect(actual).toEqual(expected)
+
+    expect(fakeEmit.mock.calls[0]).toEqual([ADD_CHAT_MESSAGE, message])
 })

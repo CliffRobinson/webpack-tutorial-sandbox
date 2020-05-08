@@ -1,32 +1,34 @@
 const log = require('loglevel') 
-
+log.setLevel('trace')
 const chatDb = require('../db/chat')
 
-module.exports = (app) => {
-    log.trace(`This is the socket, type of app is ${typeof app}`)
-    const http = require('http').createServer(app)
+const {REQUEST_MESSAGES_BY_ROOM, ADD_CHAT_MESSAGE} = require('../../constants/socketEvents')
+
+module.exports = (http) => {
+    //log.trace(`This is the socket, type of app is ${typeof app}`)
+    // const http = require('http').createServer(app)
     const io = require('socket.io')(http)
 
     io.on('connection', (socket)=> {
         //////////////// Connect and Disconnect Events ////////////////
-        log.debug(`A user connected at ${new Date()}`)
+        console.log(`A user connected at ${new Date()}`)
 
         socket.on('disconnect', () => {
-            log.debug(`A user disconnected at ${new Date}`)
+            console.log(`A user disconnected at ${new Date}`)
         })
 
         /////////////// Chat /////////////////////
-        socket.on('requestMessagesByRoom', (room_id) => {
+        socket.on(REQUEST_MESSAGES_BY_ROOM, (room_id) => {
             console.log(`socket is consulting db for messages in room ${room_id}`)
             chatDb.getChatMessagesByRoom(room_id)
                         .then(messages => {
-                            log.debug(`just did getChatMessagesByRoom, emitting an array of ${messages.length}`)
+                            console.log(`just did getChatMessagesByRoom, emitting an array of ${messages.length}`)
                             //socket.emit('receiveChatMessagesByRoom', messages)
                             io.emit('dispatch', {dispatchFunction: "receiveMessages", payload: messages})
                         })
         })
 
-        socket.on('addChatMessage', (message) => {
+        socket.on(ADD_CHAT_MESSAGE, (message) => { //the message object contains what room it is from
             log.debug(`Gotta message, it is:`)
             log.debug(message)
             chatDb.addChatMessage(message)

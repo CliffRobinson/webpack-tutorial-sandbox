@@ -13,7 +13,7 @@ const listener = socket.listen(socketPort)
 
 test('???', (done) => {
     const client1 = io.connect(`http://0.0.0.0:${socketPort}`)
-    console.log(Object.keys(client1))
+    //console.log(Object.keys(client1))
     //client1.disconnect()
     expect(true).toEqual(true)
     

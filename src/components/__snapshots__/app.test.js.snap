@@ -6,6 +6,5 @@ exports[`components/app/js matches snapshot 1`] = `
     I am rendered from React!!!!
   </p>
   <Connect(ChatWindow) />
-  <Connect(SocketListenerNoStore) />
 </div>
 `;
