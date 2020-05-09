@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { ChatWindow } from './ChatWindow'
 
@@ -19,6 +19,14 @@ const data = {
     ]
 }
 
+const fakeRequest = jest.fn()
+
 test('chatWindow', () => {
     expect(shallow(<ChatWindow chat={data} />)).toMatchSnapshot()
+})
+
+test('chatWindow calls requestMessagesByRoom on render', () => {
+    const wrapper = mount(<ChatWindow chat={data} requestMessagesByRoom={fakeRequest} room_id={77}/>)
+    console.log(fakeRequest.mock.calls)
+    expect(fakeRequest.mock.calls[0]).toEqual([77])
 })

@@ -6,6 +6,6 @@ import {data} from '../../server/db/seeds/test/test-chat'
 export function App() {
     return <div> 
         <p>I am rendered from React!!!!</p>
-        <ChatWindowContainer />
+        <ChatWindowContainer room_id={0}/>
     </div>
 }
