@@ -1,3 +1,5 @@
+import log from 'loglevel'
+
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
@@ -17,15 +19,15 @@ export function configureStore(preloadedState) {
 
     const store = createStore(rootReducer, preloadedState, composeWithDevTools(applyMiddleware(addSocketMiddleware)))
     
-    console.log("adding the dispatch event listener")
+    log.trace("adding the dispatch event listener")
     socket.on('dispatch', ({dispatchFunction, payload}) => {
-        console.log("Doing dispatch from socket")
-        console.log(dispatchFunction)
-        console.log(Object.keys(dispatchFunction))
+        log.trace(`Dispatching function ${dispatchFunction} to store`)
         store.dispatch(dispatchActions[dispatchFunction](payload))
     })
 
     return store
 }
 
-
+export const forUnitTesting = {
+    addSocketMiddleware
+}
