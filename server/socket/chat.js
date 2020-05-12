@@ -9,7 +9,7 @@ module.exports = (socket, serverSocket) => {
         log.trace(`socket is consulting db for messages in room ${room_id}`)
         chatDb.getChatMessagesByRoom(room_id)
             .then(messages => {
-                console.log(`just did getChatMessagesByRoom, emitting an array of ${messages.length}`)
+                log.trace(`just did getChatMessagesByRoom, emitting an array of ${messages.length}`)
                 //socket.emit('receiveChatMessagesByRoom', messages)
                 serverSocket.emit('dispatch', { dispatchFunction: "receiveMessages", payload: messages })
             })
