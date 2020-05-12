@@ -14,7 +14,7 @@ const data = require('./seeds/test/test-users').data;
 let testData = [];
 let testDb = null;
 
-describe('/server/db/index.js', () => {
+describe('/server/db/users.test.js', () => {
 
     // Create a separate in-memory database before each test.
     beforeEach(() => {

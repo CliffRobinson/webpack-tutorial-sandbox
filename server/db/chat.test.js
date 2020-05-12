@@ -24,7 +24,7 @@ const data = [
 let testData = [];
 let testDb = null;
 
-describe('/server/db/index.js', () => {
+describe('/server/db/chat.test.js', () => {
 
     // Create a separate in-memory database before each test.
     beforeEach(() => {
