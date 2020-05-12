@@ -7,7 +7,7 @@
  - X: modularise chat functions and keep them consistent with tests
 
  - implement rooms
-    - create rooms in db
+    X: create rooms in db
     - socket funcs to get rooms
     - reducers/actions for roomlist in redux
     - lobby component to create rooms
