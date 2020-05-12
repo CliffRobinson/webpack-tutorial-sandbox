@@ -1,10 +1,12 @@
  
  - X: fix disappearing background
- - X:tidy and make consistent interaction between redux and sockets
+ - X: tidy and make consistent interaction between redux and sockets
  - X: test that server socket returns (mocked) db content when it receives actions
  - X: test that reducers emit on client socket
- - test that client socket calls store dispatch
+ - X: test that client socket calls store dispatch - holy crap what a brain screw
  - X: modularise chat functions and keep them consistent with tests
+
+ - implement rooms
 
  - ask about http/server/socket interaction?
 
