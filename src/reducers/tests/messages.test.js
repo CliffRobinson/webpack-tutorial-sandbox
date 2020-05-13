@@ -12,9 +12,9 @@ const replicateMiddleware = (action) => ({...action, socket: fakeSocket})
 
 beforeEach(()=> jest.clearAllMocks())
 
-test('getMessages', () => {
+test('default', () => {
     const expected = initialState
-    const actual = chat(undefined, getMessages())
+    const actual = chat(undefined, {type: 'default'})
 
     expect(actual).toEqual(expected)
 })

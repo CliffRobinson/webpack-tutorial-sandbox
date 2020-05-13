@@ -1,7 +1,9 @@
 const log = require('loglevel')
 
 const chatDb = require('../db/chat')
-const {REQUEST_MESSAGES_BY_ROOM, ADD_CHAT_MESSAGE} = require('../../constants/socketEvents')
+//const {REQUEST_MESSAGES_BY_ROOM, ADD_CHAT_MESSAGE} = require('../../constants/socketEvents')
+
+const {REQUEST_MESSAGES_BY_ROOM, ADD_MESSAGE} = require('../../constants/events')
 
 module.exports = (socket, serverSocket) => {
     /////////////// Chat /////////////////////
@@ -15,7 +17,7 @@ module.exports = (socket, serverSocket) => {
             })
     })
 
-    socket.on(ADD_CHAT_MESSAGE, (message) => { //the message object contains what room it is from
+    socket.on(ADD_MESSAGE, (message) => { //the message object contains what room it is from
         log.trace(`Gotta message, it is:`)
         log.trace(message)
         chatDb.addChatMessage(message)

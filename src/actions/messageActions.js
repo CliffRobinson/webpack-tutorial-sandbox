@@ -1,9 +1,9 @@
 import log from 'loglevel'
-import {REQUEST_MESSAGES, RECEIVE_MESSAGES, GET_MESSAGES, UPDATE_CURRENT_MESSAGE, ADD_MESSAGE} from '../../constants/actionTypes'
+import {REQUEST_MESSAGES_BY_ROOM, RECEIVE_MESSAGES, UPDATE_CURRENT_MESSAGE, ADD_MESSAGE} from '../../constants/events'
 
 export function requestMessagesByRoom(room_id) {
     return {
-        type: REQUEST_MESSAGES,
+        type: REQUEST_MESSAGES_BY_ROOM,
         room_id,
     }
 }
@@ -16,12 +16,6 @@ export function receiveMessages(msgs) {
     }
 }
 
-export function getMessages() {
-    return {
-        type: GET_MESSAGES
-    }
-}
-
 export function updateCurrentMessage(currentMessage){
     return {
         type: UPDATE_CURRENT_MESSAGE,
@@ -30,7 +24,7 @@ export function updateCurrentMessage(currentMessage){
 
 }
 
-export function addMessage(msg, socket) {
+export function addMessage(msg) {
     log.trace('calling addmessage action creator')
     return {
         type: ADD_MESSAGE,

@@ -1,5 +1,5 @@
 import log from 'loglevel'
-import { GET_MESSAGES, RECEIVE_MESSAGES, REQUEST_MESSAGES, UPDATE_CURRENT_MESSAGE, ADD_MESSAGE } from '../../constants/actionTypes'
+import { RECEIVE_MESSAGES, REQUEST_MESSAGES_BY_ROOM, UPDATE_CURRENT_MESSAGE, ADD_MESSAGE } from '../../constants/events'
 
 const initialState = {
     messages: [
@@ -22,7 +22,7 @@ export function chat(state = initialState, action) {
                 messages: state.messages,
                 currentMessage: action.currentMessage
             }
-        case REQUEST_MESSAGES:
+        case REQUEST_MESSAGES_BY_ROOM:
             log.trace('reducer is asking socket for messages')
             action.socket.emit('requestMessagesByRoom', action.room_id)
             return state
@@ -31,7 +31,6 @@ export function chat(state = initialState, action) {
                 messages: action.msgs,
                 currentMessage: state.currentMessage
             }
-        case GET_MESSAGES:
         default: {
             return state;
         }

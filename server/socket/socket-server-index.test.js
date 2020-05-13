@@ -25,7 +25,7 @@ jest.mock('../db/chat', () => ({
 const io = require('socket.io-client')
 const http = require('http')
 
-const { REQUEST_MESSAGES_BY_ROOM, ADD_CHAT_MESSAGE } = require('../../constants/socketEvents')
+const { REQUEST_MESSAGES_BY_ROOM, ADD_MESSAGE } = require('../../constants/events')
 
 // Test boilerplate stolen from: https://medium.com/@tozwierz/testing-socket-io-with-jest-on-backend-node-js-f71f7ec7010f
 // Tomasz Zwierzchoń, you're a prince among men.
@@ -126,7 +126,7 @@ describe('index of socket', () => {
 
   test('Addmessage: should call addChat, then getmessages, then emit dispatch to client socket', (done) => {
     // Emit sth from Client do Server
-    socket.emit(ADD_CHAT_MESSAGE, mockMsg);
+    socket.emit(ADD_MESSAGE, mockMsg);
     // Use timeout to wait for socket.io server handshakes
     setTimeout(() => {
       expect(mockAddChat.mock.calls[0][0]).toEqual(mockMsg)
