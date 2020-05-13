@@ -1,9 +1,19 @@
 const mockGames = require('../db/seeds/test/test-games').data
 
+//const {getGamesByStatus, createGame} = require('../db/games')
+
+const mockGetGamesByStatus = jest.fn((status) => new Promise( (res, rej) => res((mockGames.filter((game) => (game.status == status))))))
+const mockCreateGame = jest.fn((game) => new Promise( (res, rej) => res(5) ))
+
+jest.mock('../db/games', () => ({
+  getGamesByStatus: mockGetGamesByStatus,
+  createGame: mockCreateGame
+}))
+
 const io = require('socket.io-client')
 const http = require('http')
 
-const { REQUEST_GAMES_BY_STATUS, RECEIVE_GAMES_BY_STATUS } = require('../../constants/events')
+const { REQUEST_GAMES_BY_STATUS, RECEIVE_GAMES_BY_STATUS, CREATE_GAME } = require('../../constants/events')
 
 // Test boilerplate stolen from: https://medium.com/@tozwierz/testing-socket-io-with-jest-on-backend-node-js-f71f7ec7010f
 // Tomasz Zwierzchoń, you're a prince among men.
@@ -66,15 +76,29 @@ afterEach((done) => {
   spy.mockClear()
   done()
 })
-/////
+
 describe('server socket game functions', () => {
-    test('socket gets games by status from db and emits receive games', () => {
-        socket.emit(REQUEST_GAMES_BY_STATUS, "pending")
+
+    test('socket gets games by status from db and emits receive games', (done) => {
+        const status = "pending"
+        socket.emit(REQUEST_GAMES_BY_STATUS, status)
         setTimeout( () => {
             expect(spy).toHaveBeenCalledWith('dispatch', {
-              dispatchFunction:'requestGamesByStatus', payload: mockGames.slice(0,1)
+              dispatchFunction:'receiveGamesByStatus', payload: {status, games: mockGames.slice(0,2)}
             })
+            done()
         }, 50)
+    })
 
+    test('socket calls db.createGame, then getGames(pending), then emit dispatch to client socket', (done) => {
+      socket.emit(CREATE_GAME, mockGames[0])
+
+      setTimeout( () => {
+        expect(mockCreateGame.mock.calls[0][0]).toEqual(mockGames[0])
+        expect(spy).toHaveBeenCalledWith('dispatch', {
+          dispatchFunction:'receiveGamesByStatus', payload: {status:"pending", games: mockGames.slice(0,2)}
+        })
+        done()
+      },50)
     })
 })
