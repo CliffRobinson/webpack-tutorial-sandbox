@@ -1,8 +1,9 @@
 import {getMessages, requestMessagesByRoom, receiveMessages, updateCurrentMessage, addMessage} from '../../actions/messageActions'
+import {REQUEST_MESSAGES_BY_ROOM, ADD_MESSAGE} from '../../../constants/events'
 import { chat, forUnitTesting} from '../messages'
 const {initialState} = forUnitTesting
 
-import {REQUEST_MESSAGES_BY_ROOM, ADD_CHAT_MESSAGE} from '../../../constants/socketEvents'
+
 
 const fakeEmit = jest.fn().mockName('fakeEmit')
 const fakeSocket = {
@@ -60,5 +61,5 @@ test('addMessage', ()=> {
 
     expect(actual).toEqual(expected)
 
-    expect(fakeEmit.mock.calls[0]).toEqual([ADD_CHAT_MESSAGE, message])
+    expect(fakeEmit.mock.calls[0]).toEqual([ADD_MESSAGE, message])
 })

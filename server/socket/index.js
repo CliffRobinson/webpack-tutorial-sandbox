@@ -1,6 +1,7 @@
 const log = require('loglevel') 
 
 const socketInitChat = require('./chat')
+const socketInitGames = require('./games')
 
 module.exports = (http) => {
     const serverSocket = require('socket.io')(http)
@@ -14,6 +15,7 @@ module.exports = (http) => {
         })
 
         socketInitChat(socket, serverSocket)
+        socketInitGames(socket, serverSocket)
     })
 
     return serverSocket
