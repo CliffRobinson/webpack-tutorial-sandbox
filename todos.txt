@@ -8,12 +8,14 @@
 
  - implement rooms
     X: create rooms in db
-    - socket funcs to get rooms
+    X: socket funcs to get rooms
     - reducers/actions for roomlist in redux
     - lobby component to create rooms
     - component for in-room
     - routing to get there
+ - auth
+ - play with creating rooms on the socket
+ - pop it up on heroku
+ - styling
 
  - ask about http/server/socket interaction?
-
-- auth

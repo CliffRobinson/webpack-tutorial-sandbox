@@ -40,14 +40,15 @@ module.exports = (socket, serverSocket) => {
     })
 
     socket.on(DELETE_GAME, (id) => {
-        log.trace(`socket is deleting game id:${id} in db`)
+        console.log(`socket is deleting game id:${id} in db`)
         gamesDb.deleteGame(id)
             .then((result) => {
-                log.trace(`result of game delete is ${result}`)
+                console.log(`result of game delete is ${result}`)
                 gamesDb.getGamesByStatus("pending")
                     .then(games => {
-                        log.trace(`just did getGamesByStatus(pending) after createGame, emitting an array of ${games.length}`)
+                        console.log(`just did getGamesByStatus(pending) after createGame, emitting an array of ${games.length}`)
                         serverSocket.emit('dispatch', {dispatchFunction: "receiveGamesByStatus", payload: {status: "pending", games}})
+                        log.setLevel("debug")
                     })
             }) 
     })

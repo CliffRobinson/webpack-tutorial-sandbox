@@ -5,7 +5,7 @@ const mockGames = require('../db/seeds/test/test-games').data
 const mockGetGamesByStatus = jest.fn((status) => new Promise((res, rej) => res((mockGames.filter((game) => (game.status == status))))))
 const mockCreateGame = jest.fn((game) => new Promise((res, rej) => res([5])))
 const mockUpdateGame = jest.fn((game) => new Promise((res, rej) => res(game.id)))
-const mockDeleteGame = jest.fn((game) => new Promise((res, rej) => 1))
+const mockDeleteGame = jest.fn((game) => new Promise((res, rej) => res(1)))
 
 jest.mock('../db/games', () => ({
   getGamesByStatus: mockGetGamesByStatus,
@@ -115,25 +115,25 @@ describe('server socket game functions', () => {
 
     socket.emit(UPDATE_GAME, newGame)
 
-    setTimeout(()=> {
+    setTimeout(() => {
       expect(mockUpdateGame.mock.calls[0][0]).toEqual(newGame)
       expect(spy).toHaveBeenCalledWith('dispatch', {
-        dispatchFunction: 'receiveGamesByStatus', payload: { status: newGame.status, games: [mockGames[2]]}        
+        dispatchFunction: 'receiveGamesByStatus', payload: { status: newGame.status, games: [mockGames[2]] }
       })
       done()
-    } , 50)
+    }, 50)
   })
 
   test('socket calls db.deleteGame then getGames, then emit dispatch to client socket', (done) => {
     const id = 1
     socket.emit(DELETE_GAME, id)
-
+    require('loglevel').setLevel("trace")
     setTimeout(() => {
       expect(mockDeleteGame.mock.calls[0][0]).toEqual(id)
-      // expect(spy).toHaveBeenCalledWith('dispatch', {
-      //   dispatchFunction: 'receiveGamesByStatus', payload: { status: "pending", games: mockGames.slice(0, 2)}        
-      // })
+      expect(spy).toHaveBeenCalledWith('dispatch', {
+        dispatchFunction: 'receiveGamesByStatus', payload: { status: "pending", games: mockGames.slice(0, 2) }
+      })
       done()
-    })
+    }, 50)
   })
 })
