@@ -39,7 +39,7 @@ module.exports = (socket, serverSocket) => {
             })
     })
 
-    socket.on(DELETE_GAME, (id) => {
+    socket.on(DELETE_GAME, ({id}) => {
         console.log(`socket is deleting game id:${id} in db`)
         gamesDb.deleteGame(id)
             .then((result) => {

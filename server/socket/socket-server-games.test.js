@@ -126,7 +126,7 @@ describe('server socket game functions', () => {
 
   test('socket calls db.deleteGame then getGames, then emit dispatch to client socket', (done) => {
     const id = 1
-    socket.emit(DELETE_GAME, id)
+    socket.emit(DELETE_GAME, {id})
     require('loglevel').setLevel("trace")
     setTimeout(() => {
       expect(mockDeleteGame.mock.calls[0][0]).toEqual(id)

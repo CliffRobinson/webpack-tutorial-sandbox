@@ -9,7 +9,7 @@
  - implement rooms
     X: create rooms in db
     X: socket funcs to get rooms
-    - reducers/actions for roomlist in redux
+    X: reducers/actions for roomlist in redux
     - lobby component to create rooms
     - component for in-room
     - routing to get there
