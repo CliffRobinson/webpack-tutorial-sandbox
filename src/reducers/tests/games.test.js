@@ -37,10 +37,10 @@ test('reducers/games.js: receiveGamesByStatus requesting invalid statis', () => 
 test('reducers/games.js: receiveGamesByStatus requesting valid status', () => {
     const expected = {
         ...initalState,
-        [PENDING]: fakeGame
+        [PENDING]: [fakeGame]
     }
 
-    const actual = games(undefined, replicateMiddleware(receiveGamesByStatus(PENDING, fakeGame)))
+    const actual = games(undefined, replicateMiddleware(receiveGamesByStatus({status:PENDING, games:[fakeGame]})))
 
     expect(actual).toEqual(expected)
 })

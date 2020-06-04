@@ -7,7 +7,7 @@ import reducers from './reducers/*'
 
 import { socketInstance as socket} from './socket-client'
 
-import * as dispatchActions from './actions/messageActions'
+import * as dispatchActions from './actions/*'
 
 const addSocketMiddleware = store => next => action => {
         next( { ...action, socket})

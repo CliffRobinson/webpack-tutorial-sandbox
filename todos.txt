@@ -10,7 +10,10 @@
     X: create rooms in db
     X: socket funcs to get rooms
     X: reducers/actions for roomlist in redux
-    - lobby component to create rooms
+    - lobby component
+         - X request rooms from redux
+         - display rooms  
+         - form to create new rooms
     - component for in-room
     - routing to get there
  - auth

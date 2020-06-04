@@ -15,6 +15,8 @@ export function games(state = initalState, action) {
             return state
         }
         case RECEIVE_GAMES_BY_STATUS: {
+            console.log('RECEIVING GAMES BY STATUS')
+            console.log(action)
             return {
                 ... state,
                 [action.status]: action.games

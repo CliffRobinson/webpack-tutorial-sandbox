@@ -14,7 +14,7 @@ export function requestGamesByStatus(status) {
 
 }
 
-export function receiveGamesByStatus(status, games) {
+export function receiveGamesByStatus({status, games}) {
     return {
         type: RECEIVE_GAMES_BY_STATUS,
         status,

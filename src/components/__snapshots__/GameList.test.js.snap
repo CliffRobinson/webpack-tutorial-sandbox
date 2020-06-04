@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "white",
+      "border": "2px solid black",
+    }
+  }
+>
+  <h3>
+    This is a list of games
+  </h3>
+</div>
+`;

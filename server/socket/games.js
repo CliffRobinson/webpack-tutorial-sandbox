@@ -48,7 +48,6 @@ module.exports = (socket, serverSocket) => {
                     .then(games => {
                         console.log(`just did getGamesByStatus(pending) after createGame, emitting an array of ${games.length}`)
                         serverSocket.emit('dispatch', {dispatchFunction: "receiveGamesByStatus", payload: {status: "pending", games}})
-                        log.setLevel("debug")
                     })
             }) 
     })
