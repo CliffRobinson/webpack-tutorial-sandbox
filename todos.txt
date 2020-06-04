@@ -6,13 +6,15 @@
  - X: test that client socket calls store dispatch - holy crap what a brain screw
  - X: modularise chat functions and keep them consistent with tests
 
+- sort out way to get players for room from DB
+
  - implement rooms
     X: create rooms in db
     X: socket funcs to get rooms
     X: reducers/actions for roomlist in redux
     - lobby component
-         - X request rooms from redux
-         - display rooms  
+         - X: request rooms from redux
+         - X: display rooms  
          - form to create new rooms
     - component for in-room
     - routing to get there

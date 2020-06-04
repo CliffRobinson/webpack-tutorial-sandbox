@@ -2,6 +2,7 @@ import log from 'loglevel'
 import React, { useEffect } from 'react'
 
 import {PENDING} from '../../constants/gameStatus'
+import {GameListItem} from './GameListItem'
 
 const styleObj = {
     backgroundColor: 'white',
@@ -16,9 +17,12 @@ export function GameList(props) {
         requestGamesByStatus(PENDING)
     }, [])
 
+    const pendingGames = props.games[PENDING];
+
     return (
         <div style={styleObj}>
             <h3>This is a list of games</h3>
+            {pendingGames.map((game, i) => (<GameListItem key={i} game={game}/>))}
         </div>
 )
 }
