@@ -1,10 +1,14 @@
-import {PENDING, PLAYING, CLOSED} from '../../constants/gameStatus'
+import {PENDING, PLAYING, CLOSED, CREATING} from '../../constants/gameStatus'
 import {REQUEST_GAMES_BY_STATUS, RECEIVE_GAMES_BY_STATUS, CREATE_GAME, UPDATE_GAME, DELETE_GAME} from '../../constants/events'
 
 const initalState = {
     [PENDING]: [],
     [PLAYING]: [],
-    [CLOSED]: []
+    [CLOSED]: [],
+    [CREATING]: {
+        name: "",
+        password:""
+    },
 }
 
 export function games(state = initalState, action) {

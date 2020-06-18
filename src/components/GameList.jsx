@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 
 import {PENDING} from '../../constants/gameStatus'
 import {GameListItem} from './GameListItem'
+import {GameCreatorForm} from './GameCreatorForm'
 
 const styleObj = {
     backgroundColor: 'white',

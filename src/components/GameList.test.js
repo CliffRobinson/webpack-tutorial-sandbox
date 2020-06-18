@@ -6,7 +6,8 @@ import {data as testGameData} from '../../server/db/seeds/test/test-games'
 
 const testProps = {
     games: {
-        pending: []
+        pending: [],
+        creating: {}
     }
 }
 

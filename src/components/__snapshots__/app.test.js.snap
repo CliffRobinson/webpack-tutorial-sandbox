@@ -3,6 +3,7 @@
 exports[`components/app/js matches snapshot 1`] = `
 <div>
   <Connect(GameList) />
+  <Connect(GameCreatorForm) />
   <Connect(ChatWindow)
     room_id={0}
   />

@@ -1,5 +1,6 @@
 module.exports = {
     PENDING:"pending",
     PLAYING:"playing",
-    CLOSED:"closed"
+    CLOSED:"closed",
+    CREATING: 'creating'
 }
