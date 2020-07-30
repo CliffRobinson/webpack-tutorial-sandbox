@@ -1,7 +1,8 @@
 const log = require('loglevel')
 const server = require("./server")
-const socket = require('./socket')(server)
-const {socketPort, serverPort} = require('../constants')
+const http = require('http').createServer(server)
+const socket = require('./socket')(http)
+const {socketPort, serverPort} = require('../constants/ports')
 
 
 const port = process.env.PORT || serverPort

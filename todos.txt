@@ -1,8 +1,27 @@
- - tidy and make consistent interaction between redux and sockets
- - test that server socket returns (mocked) db content when it receives actions
- - test that reducers emit on client socket
- - test that client socket calls store dispatch
+ 
+ - X: fix disappearing background
+ - X: tidy and make consistent interaction between redux and sockets
+ - X: test that server socket returns (mocked) db content when it receives actions
+ - X: test that reducers emit on client socket
+ - X: test that client socket calls store dispatch - holy crap what a brain screw
+ - X: modularise chat functions and keep them consistent with tests
+
+- sort out way to get players for room from DB
+
+ - implement rooms
+    X: create rooms in db
+    X: socket funcs to get rooms
+    X: reducers/actions for roomlist in redux
+    - lobby component
+         - X: request rooms from redux
+         - X: display rooms  
+         - X: container for form to create new rooms
+         - X: form to create new rooms
+    - component for in-room
+    - routing to get there
+ - auth
+ - play with creating rooms on the socket
+ - pop it up on heroku
+ - styling
 
  - ask about http/server/socket interaction?
-
-- auth

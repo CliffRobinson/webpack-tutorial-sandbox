@@ -1,28 +1,18 @@
-export const REQUEST_MESSAGES = "REQUEST_MESSAGES"
-export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES"
-export const GET_MESSAGES = "GET_MESSAGES"
-export const UPDATE_CURRENT_MESSAGE = "UPDATE_CURRENT_MESSAGE"
-export const ADD_MESSAGE = "ADD_MESSAGE"
+import log from 'loglevel'
+import {REQUEST_MESSAGES_BY_ROOM, RECEIVE_MESSAGES, UPDATE_CURRENT_MESSAGE, ADD_MESSAGE} from '../../constants/events'
 
-export function requestMessagesByRoom(room_id, socket) {
+export function requestMessagesByRoom(room_id) {
     return {
-        type: REQUEST_MESSAGES,
+        type: REQUEST_MESSAGES_BY_ROOM,
         room_id,
-        //socket
     }
 }
 
 export function receiveMessages(msgs) {
-    console.log('calling receive message action creator')
+    log.trace('calling receive message action creator')
     return {
         type: RECEIVE_MESSAGES,
         msgs
-    }
-}
-
-export function getMessages() {
-    return {
-        type: GET_MESSAGES
     }
 }
 
@@ -34,11 +24,10 @@ export function updateCurrentMessage(currentMessage){
 
 }
 
-export function addMessage(msg, socket) {
-    console.log('calling addmessage action creates')
+export function addMessage(msg) {
+    log.trace('calling addmessage action creator')
     return {
         type: ADD_MESSAGE,
-        //socket,
         msg
     }
 }

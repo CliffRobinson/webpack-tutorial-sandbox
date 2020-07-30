@@ -2,10 +2,10 @@
 
 exports[`components/app/js matches snapshot 1`] = `
 <div>
-  <p>
-    I am rendered from React!!!!
-  </p>
-  <Connect(ChatWindow) />
-  <Connect(SocketListenerNoStore) />
+  <Connect(GameList) />
+  <Connect(GameCreatorForm) />
+  <Connect(ChatWindow)
+    room_id={0}
+  />
 </div>
 `;

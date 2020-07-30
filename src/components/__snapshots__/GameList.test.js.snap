@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot, game 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "white",
+      "border": "2px solid black",
+    }
+  }
+>
+  <h3>
+    This is a list of games
+  </h3>
+  <GameListItem
+    game={
+      Object {
+        "id": 1,
+        "name": "Harry's Hangout",
+        "password": "",
+        "status": "pending",
+      }
+    }
+    key="0"
+  />
+  <GameListItem
+    game={
+      Object {
+        "id": 3,
+        "name": "Riddle's Ruckus",
+        "password": "pureblood",
+        "status": "playing",
+      }
+    }
+    key="1"
+  />
+</div>
+`;
+
+exports[`snapshot, no games 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "white",
+      "border": "2px solid black",
+    }
+  }
+>
+  <h3>
+    This is a list of games
+  </h3>
+</div>
+`;

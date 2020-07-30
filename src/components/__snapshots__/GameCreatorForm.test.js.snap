@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<form
+  style={
+    Object {
+      "backgroundColor": "white",
+      "border": "2px solid black",
+    }
+  }
+>
+  <h4>
+     Wanna make a gaem?
+  </h4>
+  <label
+    htmlFor="name"
+  >
+    Name:
+  </label>
+  <input
+    name="name"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="password"
+  >
+    Password:
+  </label>
+  <input
+    name="password"
+    onChange={[Function]}
+    placeholder="leave blank if you don't want a password"
+    type="text"
+  />
+  <button
+    onClick={[Function]}
+    type="submit"
+  >
+    Let's PLAAAY
+  </button>
+</form>
+`;

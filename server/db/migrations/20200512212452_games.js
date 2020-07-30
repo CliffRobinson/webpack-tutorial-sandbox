@@ -1,12 +1,12 @@
 exports.up = function(knex) {
-    return knex.schema.createTable('users', table => {
+    return knex.schema.createTable('games', table => {
         table.increments('id')
         table.string('name')
         table.string('password')
-        table.integer('currentGame')
+        table.string('status')
     })
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('users')
+    return knex.schema.dropTable('games')    
 };

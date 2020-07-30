@@ -3,8 +3,7 @@ import log from 'loglevel'
 
 
 export function ChatWindow(props) {
-    const { chat, socket, requestMessagesByRoom, updateCurrentMessage, addMessage } = props
-    const room_id = 1
+    const { chat, requestMessagesByRoom, updateCurrentMessage, addMessage, room_id } = props
     const user_id = 1
     const {messages, currentMessage} = chat
     const styleObj = {
@@ -20,7 +19,7 @@ export function ChatWindow(props) {
             time: new Date().getTime(),
             msg: currentMessage
         }
-        addMessage(message, socket)
+        addMessage(message)
     }
 
     function onInputChange(e) {
@@ -29,7 +28,7 @@ export function ChatWindow(props) {
 
     useEffect(() => {
         log.trace('chatwindow component is dispatching requestmessages action')
-        requestMessagesByRoom(room_id, socket)
+        requestMessagesByRoom(room_id)
     },[])
 
     return (

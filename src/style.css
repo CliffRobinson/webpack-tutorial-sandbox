@@ -9,13 +9,6 @@ img {
   height: 150px;
 }
 
-@font-face {
-  font-family: "ssp";
-  src: url("./fonts/SourceSansPro-Regular.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
 .myClass {
   color: yellow;
   font-family: "ssp";
