@@ -1,5 +1,3 @@
-//const nock = require('nock')
-
 const supertest = require('supertest')
 const server = require('../server')
 
