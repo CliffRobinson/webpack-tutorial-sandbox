@@ -4,7 +4,7 @@
     "description": "Node.js example server starter project",
     "scripts": {
         "start": "webpack && node server",
-        "postinstall": "npx jest --coverage && npx webpack && npx knex migrate:latest",
+        "postinstall": "npx webpack && npx knex migrate:latest && npx jest --coverage",
         "knex": "knex",
         "test": "jest",
         "rebootDb": "npx knex migrate:rollback && npx knex migrate:latest && npx knex seed:run"
