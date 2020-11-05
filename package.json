@@ -2,6 +2,9 @@
     "name": "node-http-server",
     "version": "1.0.0",
     "description": "Node.js example server starter project",
+    "engines" : { 
+        "node" : ">=12.19.0" 
+    },
     "scripts": {
         "start": "webpack && node server",
         "postinstall": "npx webpack && npx knex migrate:latest && npx jest --coverage",
