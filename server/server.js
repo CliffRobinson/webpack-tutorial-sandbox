@@ -2,7 +2,10 @@ const log = require('loglevel')
 const express = require("express");
 const path = require("path");
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const server = express();
+
+server.use(cors('*'))
 
 const userRoutes = require('./routes/user-routes')
 const chatRoutes = require('./routes/chat-routes')
